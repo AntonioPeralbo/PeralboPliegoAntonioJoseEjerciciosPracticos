@@ -20,6 +20,9 @@ Intenta hacer pruebas con otros compañeros, imagina que ellos son los comprador
 
 El sistema deberá seguir corriendo hasta que el encargado de cargar las reservas de los asientos determine que ha finalizado.
          */
+        
+        int opcion;
+        boolean salida= false;
         int fila;
         int columna;
         String o = " disponible ";
@@ -38,11 +41,11 @@ El sistema deberá seguir corriendo hasta que el encargado de cargar las reserva
             }
 
         }
-        while (flag && !flagout) {
+        while (flag && !flagout && !salida) {
 
             System.out.println("Por favor, ingrese el numero de fila y a continuacion el de la columna");
-            fila = Integer.parseInt(sc.next());
-            columna = Integer.parseInt(sc.next());
+            fila = sc.nextInt();
+            columna = sc.nextInt();
             System.out.println(" el asiento elgido  se encuenta " + asientos[fila - 1][columna - 1]);
 
             while (asientos[fila - 1][columna - 1] == x) {
@@ -55,18 +58,36 @@ El sistema deberá seguir corriendo hasta que el encargado de cargar las reserva
 
             asientos[fila - 1][columna - 1] = x;
             System.out.println("Su asiento ha sido reservado");
-            flagout = true;
+            
             for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 if (asientos[i][j] == o) {
-                   flagout = false;
+                   flagout = true;
+                   
                 }
+            
             }
+            
 
         }
+           if( flagout){
+               System.out.println("Todos los asientos estan ocupados");
+           }
             
+            System.out.println(" si desea salir del programa pulse 1");
+           opcion= sc.nextInt();
+            if (opcion ==1){
+                salida = true;
+                System.out.println("Gracias por su compra");
+                
+              
+                
+            }
         }
-        System.out.println("Todos los asientos estan ocupados");
+        
+        
+        
+        
     }
     
 }
